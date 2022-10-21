@@ -3,16 +3,15 @@ import React, { Component } from 'react'
 import List from './List';
 class App extends Component {
   state={
-    list:[{title:'ayah', description:'web-developer'},
-    {title:'ali', description:'building-engineer'},],
+    list:[],
     title:'',
     description:'',
     _currentlist:{
       title:'',
       description:''
     },
-    btn1: "add",
-    btn2:"reset",
+    btn1: "Add",
+    btn2:"Reset",
     index:-1,
     current:{}
   }
@@ -67,8 +66,8 @@ class App extends Component {
     this.defaultInput(currentlist);
     let idx = this.state.list.indexOf(currentlist);
     this.setState({
-      btn1:"update",
-      btn2:"cancel",
+      btn1:"Update",
+      btn2:"Cancel",
       index:idx,
       current: currentlist
     })
@@ -83,8 +82,8 @@ class App extends Component {
     
     this.setState({
       list:_list,
-      btn1:"add",
-      btn2:"reset",
+      btn1:"Add",
+      btn2:"Reset",
     })
     
     
@@ -98,8 +97,8 @@ class App extends Component {
       title:"",
       description:"",
       _currentlist:obj,
-      btn1:"add",
-      btn2:"reset"
+      btn1:"Add",
+      btn2:"Reset"
     })
 
   }
@@ -115,15 +114,15 @@ class App extends Component {
     return (
       <div>
         <h2 className='App'>Simple To Do List</h2>
-        <form className='todo' onSubmit={(this.state.btn1 ==="add")? this.addToList.bind(this): this.update.bind(this)}
+        <form className='todo' onSubmit={(this.state.btn1 ==="Add")? this.addToList.bind(this): this.update.bind(this)}
          > 
           <label htmlFor="title">Title</label>
           <input type="text" name='title' id='title'  onChange={this.onTitleChange.bind(this)} defaultValue={this.state._currentlist.title}/>
           <label htmlFor="desc">Description</label>
           <textarea type="text" name="desc" id="desc" cols="10" rows="5" onChange={this.onDescChange.bind(this)} defaultValue={this.state._currentlist.description}></textarea>
           <div>
-            <button type="submit">{this.state.btn1}</button>
-            <button type="reset" onClick={(this.state.btn2 ==="reset")? this.reset.bind(this): this.cancel.bind(this)}>{this.state.btn2}</button>
+            <button className='btn btn-dark' type="submit">{this.state.btn1}</button>
+            <button className='btn btn-danger' type="reset" onClick={(this.state.btn2 ==="Reset")? this.reset.bind(this): this.cancel.bind(this)}>{this.state.btn2}</button>
           </div>
         </form>
           
